@@ -1,0 +1,255 @@
+[colors]
+background = ${xrdb:background}
+background-alt = ${xrdb:background}
+foreground = ${xrdb:foreground}
+color1 = ${xrdb:color1}
+color2 = ${xrdb:color2} 
+color3 = ${xrdb:color3}
+color4 = ${xrdb:color4}
+color5 = ${xrdb:color5}
+color6 = ${xrdb:color6}
+color7 = ${xrdb:color7}
+color8 = ${xrdb:color8}
+
+[bar/info]
+override-redirect = true
+bottom = true
+background = ${colors.background}
+;background = transparent 
+foreground = ${colors.foreground}
+fixed-center = false
+width = 300
+height = 20
+radius = 0.0
+line-size = 2
+line-color = #f00
+offset-y = 0
+offset-x = 65%
+wm-restack = 2bwm
+
+font-0 = SFMono Nerd Font:style=Regular:pixelsize=9.5:antialias=true;1
+font-1 = SFMono Nerd Font:style=Regular:pixelsize=9.5:antialias=true;0
+
+modules-right = alsa brillo date power
+modules-center = 
+modules-left = 
+tray-position = none
+tray-maxsize = 15
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 2
+module-margin = 0.8
+
+[bar/mybar]
+override-redirect = true
+bottom = false
+;background = ${colors.background}
+background = transparent
+foreground = ${colors.foreground}
+fixed-center = true
+width = 95%
+height = 30
+radius = 0.0
+line-size = 2
+line-color = #f00
+offset-y = 10 
+offset-x = 2%
+wm-restack = 2bwm
+
+font-0 = SFMono Nerd Font:style=Regular:pixelsize=9.6:antialias=true;1
+font-1 = SFMono Nerd Font:style=Regular:pixelsize=9.6:antialias=true;0
+
+modules-right = alsa brillo date power
+modules-center = 
+modules-left = 2bws ewmh polywins
+tray-position = none
+tray-maxsize = 15
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 0
+module-margin = 0
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+
+label-empty-foreground = ${colors.color8}
+label-focused-background = ${colors.background-alt} 
+label-focused = %name%
+label-focused-padding = 1
+label-occupied = %name%
+label-occupied-padding = 1
+label-empty = %name%
+label-empty-padding = 1
+
+label-monocle = M
+label-tiled = T
+label-floating = F
+label-pseudotiled = P
+
+[module/ewmh]
+type = internal/xworkspaces
+format = <label-state>
+
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+label-empty-foreground = ${colors.foreground}
+label-focused-foreground = ${colors.foreground} 
+label-active-foreground = ${colors.color5}
+label-focused = %name%
+label-focused-padding = 1
+label-occupied = %name%
+label-occupied-padding = 1
+label-empty = %name%
+label-empty-padding = 1
+label-active = %name%
+label-active-padding = 1
+label-urgnet = %name%
+label-urgent-padding = 1
+
+[settings]
+label-focused-undexrline= ${colors.background}
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+pseudo-transparency = true
+
+[module/date]
+type = internal/date
+time = %I:%M%P
+format = "  <label>"
+format-background = ${colors.color1}
+format-foreground = ${colors.background} 
+format-padding = 2
+label = %time%
+label-foreground = ${colors.foreground} 
+click-left = orage
+label-background = ${colors.background}
+label-padding = 2
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = BAT <label-charging>
+format-discharging = BAT <label-discharging>
+format-full = BAT <label-full>
+label-charging = %percentage%%
+label-discharging = %percentage%%
+
+label-charging-foreground = ${colors.foreground}
+label-discharging-foreground = ${colors.foreground}
+label-full-foreground = ${colors.foreground}
+
+format-charging-foreground = ${colors.color2}
+format-discharging-foreground = ${colors.color2}
+format-full-foreground = ${colors.color2}
+
+format-charging-padding = 1
+format-discharging-padding = 1
+format-full-padding = 1
+
+[module/network]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+unknown-as-up = true
+accumulate-stats = true
+
+format-connected = WIFI <label-connected>
+label-connected = %essid%
+format-connected-padding = 1
+format-connected-foreground = ${colors.color4}
+label-connected-foreground = ${colors.foreground}
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = "  <label-volume>"
+label-muted = muted
+label-muted-padding = 2
+label-volume-padding = 2
+label-volume-foreground = ${colors.foreground}
+label-volume-background = ${colors.background}
+format-volume-foreground = ${colors.background}
+format-volume-background = ${colors.color5}
+format-volume-padding = 2
+
+[module/cpu]
+type = internal/cpu
+
+format = CPU <label>
+format-foreground = ${colors.color3}
+format-padding = 2
+label = %percentage%%
+label-foreground = ${colors.foreground}
+
+[module/power]
+type = custom/menu
+expand-right = true
+label-padding = 0
+format-spacing = 0
+
+label-open = "  EXIT  "
+label-open-background = ${colors.foreground}
+label-open-foreground = ${colors.color3}
+label-close = " Cancel "
+label-close-foreground = ${colors.foreground}
+label-close-background = ${colors.color2}
+label-separator = 
+label-separator-foreground = ${colors.foreground}
+format-background = ${colors.color3}
+
+menu-0-0 = " Reboot "
+menu-0-0-exec = menu-open-1
+menu-0-0-background = ${colors.color3}
+menu-0-1 = " Power Off "
+menu-0-1-background = ${colors.color5}
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = " cancel "
+menu-1-0-exec = menu-open-0
+menu-1-1 = " reboot "
+menu-1-1-exec = reboot
+
+menu-2-0 = " Power Off "
+menu-2-0-exec = poweroff
+menu-2-0-background = ${colors.color2}
+menu-2-1 = " cancel "
+menu-2-1-exec = menu-open-0
+
+[module/brillo]
+type = custom/script
+format-padding = 2
+label-padding = 2
+format = "  <label>"
+exec = echo ""$(brillo)"%"
+interval = 0.1
+format-foreground = ${colors.background}
+format-background = ${colors.color8}
+label-foreground = ${colors.color8}
+label-background = ${colors.background}
+
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/scripts/polywins.sh 2>/dev/null
+format = <label>
+label = %output%
+label-padding = 1
+tail = true
+
+[module/2bws]
+type              = custom/script
+exec              = bash ~/.config/polybar/scripts/2bwm.sh
+interval          = 0.01
+format-padding    = 3
+format-background = ${colors.background}
+scroll-up         = exec ~/.config/polybar/scripts/wscycle.sh -f
+scroll-down       = exec ~/.config/polybar/scripts/wscycle.sh -r
