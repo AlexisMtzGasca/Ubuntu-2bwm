@@ -11,36 +11,6 @@ color6 = ${xrdb:color6}
 color7 = ${xrdb:color7}
 color8 = ${xrdb:color8}
 
-[bar/info]
-override-redirect = true
-bottom = true
-background = ${colors.background}
-;background = transparent 
-foreground = ${colors.foreground}
-fixed-center = false
-width = 300
-height = 20
-radius = 0.0
-line-size = 2
-line-color = #f00
-offset-y = 0
-offset-x = 65%
-wm-restack = 2bwm
-
-font-0 = SFMono Nerd Font:style=Regular:pixelsize=9.5:antialias=true;1
-font-1 = SFMono Nerd Font:style=Regular:pixelsize=9.5:antialias=true;0
-
-modules-right = alsa brillo date power
-modules-center = 
-modules-left = 
-tray-position = none
-tray-maxsize = 15
-tray-background = ${colors.background}
-tray-offset-x = 0
-tray-offset-y = 0
-tray-padding = 2
-module-margin = 0.8
-
 [bar/mybar]
 override-redirect = true
 bottom = false
